@@ -1,4 +1,4 @@
-Feature: Reservations
+Feature: Guest lists
   In order to direct Internet visitors to venues
   A visitor
   Should be able to sign up for a guest list
