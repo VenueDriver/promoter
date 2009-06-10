@@ -9,7 +9,8 @@ class PromoterFeaturesGenerator < Rails::Generator::Base
        "features/support/paths.rb",
        "features/reservations.feature",
        "features/guestlists.feature",
-       "features/contacts.feature"].each do |file|
+       "features/contacts.feature",
+       "config/initializers/promoter.rb"].each do |file|
         m.file file, file
        end
     end

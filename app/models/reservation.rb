@@ -5,10 +5,15 @@ class Reservation < ActiveResource::Base
     self.site = "http://localhost:3000/api"
     self.user = "ryan"
     self.password = "password"
+
+    self.site = "http://venuedriver.com/api"
+    self.user = VENUE_DRIVER_USERNAME
+    self.password = VENUE_DRIVER_PASSWORD
+
   else
     self.site = "http://venuedriver.com/api"
-    self.user = "rokvegassite"
-    self.password = "3jznJb75"
+    self.user = VENUE_DRIVER_USERNAME
+    self.password = VENUE_DRIVER_PASSWORD
   end
   
 end
