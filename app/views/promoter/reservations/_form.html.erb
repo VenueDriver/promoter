@@ -1,62 +1,56 @@
-	<% form_remote_tag :url => reservations_path,
-	 	:loading => "Element.show('indicator');",
-	 	:complete => "Element.hide('indicator');" do -%>
+<% form_remote_tag :url => reservations_path,
+  :loading => "Element.show('indicator');",
+  :complete => "Element.hide('indicator');" do -%>
 
-     <img src="images/reservations/titlebar_reservationform.gif" />
-     <div id="container_topcontent_bg"><div id="spacer_5px"></div><br /><br />
-     <div id="container_form"><table cellspacing="10"><tr><td align="center"><span class="med_pink">
-	
-		<div id="error">
-			<% if flash[:error] %>
-				Something went wrong<br />
-				<div id="error"><%= flash[:error] %></div>
-			<% else %>
-				Please fill out the form below and a VIP Host will contact you regarding your reservation.
-			<% end %>
+  <div id="error">
+  	<% if flash[:error] %>
+  		Something went wrong<br />
+  		<div id="error"><%= flash[:error] %></div>
+  	<% else %>
+  		Please fill out the form below and a VIP Host will contact you regarding your reservation.
+  	<% end %>
 			
-	</span></td></tr></table>
-     <table width="100%" border="0" cellspacing="10">
-<tr>
-  <td width="28%" align="right" class="norm_pink">EVENT</td>
-  <td width="72%" class="med_pink"><%= @events %></td>
-</tr>
-<tr>
-  <td width="28%" align="right" class="norm_pink">First Name</td>
-  <td width="72%" class="med_pink"><input type="text" name="first" id="first" />
-    <span class="star">*</span></td>
+  <table width="100%" border="0" cellspacing="10">
+  <tr>
+    <td width="28%" align="right">EVENT</td>
+    <td width="72%"><%= @events %></td>
   </tr>
-<tr>
-  <td align="right" class="norm_pink">Last Name</td>
-  <td class="med_pink"><input type="text" name="last" id="last" />
-    <span class="star">*</span></td>
-  </tr>
-<tr>
-  <td align="right" class="norm_pink">Phone</td>
-  <td class="med_pink"><input type="text" name="phone" id="phone" />
-    <span class="star">*</span></td>
-  </tr>
-<tr>
-  <td align="right" class="norm_pink">Email</td>
-  <td class="med_pink"><input type="text" name="email" id="email" />
-    <span class="star">*</span></td>
-  </tr>
-<tr>
-  <td align="right" class="norm_pink">Confirm Email</td>
-  <td class="med_pink"><input type="text" name="email_confirm" id="email_confirm" />
-    <span class="star">*</span></td>
-  </tr>
-<tr>
-  <td align="right">&nbsp;</td>
-  <td><br />
-    <span class="norm_pink">* </span><span class="norm_grey">Required Field </span>
-    <p class="norm_grey"><span class="norm_pink">* </span>By submitting your information you agree to the use of your contact information for marketing purposes by Rok Vegas Nightclub and New York New York Hotel &amp; Casino.</p>
-    <br />
-    <br />
-    <%= image_submit_tag "sitewide/button_submitform.gif", :alt=>"" %>
-	<%= image_tag 'indicator.gif', :id => 'indicator', :style => 'display: none;' %><br />
-    <br /></td>
-  </tr>
-     </table>
-     </div>
+  <tr>
+    <td width="28%" align="right">First Name</td>
+    <td width="72%"><input type="text" name="first" id="first" />
+      <span>*</span></td>
+    </tr>
+  <tr>
+    <td align="right">Last Name</td>
+    <td><input type="text" name="last" id="last" />
+      <span>*</span></td>
+    </tr>
+  <tr>
+    <td align="right">Phone</td>
+    <td><input type="text" name="phone" id="phone" />
+      <span>*</span></td>
+    </tr>
+  <tr>
+    <td align="right">Email</td>
+    <td><input type="text" name="email" id="email" />
+      <span>*</span></td>
+    </tr>
+  <tr>
+    <td align="right">Confirm Email</td>
+    <td><input type="text" name="email_confirm" id="email_confirm" />
+      <span>*</span></td>
+    </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><br />
+      <span>* </span><span class="norm_grey">Required Field </span>
+      <p class="norm_grey"><span>* </span>By submitting your information you agree to the use of your contact information for marketing purposes.</p>
+      <br />
+      <br />
+      <%= submit_tag 'submit', :id => 'create' %>
+      <%= image_tag 'indicator.gif', :id => 'indicator', :style => 'display: none;' %><br />
+      <br /></td>
+    </tr>
+  </table>
 
 	<% end %>

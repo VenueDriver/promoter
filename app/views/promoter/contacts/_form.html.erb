@@ -4,96 +4,88 @@
  	:loading => "Element.show('indicator');",
  	:complete => "Element.hide('indicator');" do -%>
 
-
-     <img src="/images/newslettersignup/titlebar_newsletter.gif" />
-     <div id="container_topcontent_bg"><div id="spacer_5px"></div><br /><br />
-     <div id="container_form"><table cellspacing="10"><tr>
-       <td align="center"><span class="med_pink">
+<div id="error">
+	<% if flash[:error] %>
+		Something went wrong<br />
+		<div id="error"><%= flash[:error] %></div>
+	<% else %>
+		Please  fill out the form below to join our contacts list.
+	<% end %>
+</div>
 	
-	<div id="error">
-		<% if flash[:error] %>
-			Something went wrong<br />
-			<div id="error"><%= flash[:error] %></div>
-		<% else %>
-			Please  fill out the form below to RECIEVE WEEKLY UPDATES FOR ALL ROK VEGAS EVENTS AND SPECIALS
-		<% end %>
-	</div>
-	
-	</span></td></tr></table>
-     <table width="100%" border="0" cellspacing="10">
+<table width="100%" border="0" cellspacing="10">
 <tr>
-  <td width="28%" align="right" class="norm_pink">First Name</td>
-  <td width="72%" class="med_pink"><input type="text" name="first" id="first" />
-    <span class="star">*</span></td>
+  <td width="28%" align="right">First Name</td>
+  <td width="72%"><input type="text" name="first" id="first" />
+    <span>*</span></td>
 </tr>
 <tr>
-  <td align="right" class="norm_pink">Last Name</td>
-  <td class="med_pink"><input type="text" name="last" id="last" />
-    <span class="star">*</span></td>
+  <td align="right">Last Name</td>
+  <td><input type="text" name="last" id="last" />
+    <span>*</span></td>
   </tr>
 <tr>
-  <td align="right" class="norm_pink">Phone</td>
-  <td class="med_pink"><input type="text" name="phone" id="phone" /></td>
+  <td align="right">Phone</td>
+  <td><input type="text" name="phone" id="phone" /></td>
   </tr>
 <tr>
-  <td align="right" class="norm_pink">Email</td>
-  <td class="med_pink"><input type="text" name="email" id="email" />
-    <span class="star">*</span></td>
+  <td align="right">Email</td>
+  <td><input type="text" name="email" id="email" />
+    <span>*</span></td>
   </tr>
 <tr>
-  <td align="right" class="norm_pink">Confirm Email</td>
-  <td class="med_pink"><input type="text" name="email_confirm" id="email_confirm" />
-    <span class="star">*</span></td>
+  <td align="right">Confirm Email</td>
+  <td><input type="text" name="email_confirm" id="email_confirm" />
+    <span>*</span></td>
   </tr>
 <tr>
-  <td align="right" class="norm_pink">D.O.B.</td>
-  <td width="72%" class="med_pink"><%= select_date(Date.today - 21.years, :prefix => 'dob', :start_year => 1930) %>
-    <span class="star">*</span></td>
+  <td align="right">D.O.B.</td>
+  <td width="72%"><%= select_date(Date.today - 21.years, :prefix => 'dob', :start_year => 1930) %>
+    <span>*</span></td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">Gender</td>
+  <td align="right">Gender</td>
   <td><input type="radio" name="gender" id="male" value="male" />
     Male        
       <input type="radio" name="gender" id="female" value="female" />
       Female</td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">STREET Address 1</td>
-  <td><input name="address_1" type="text" size="25" /><span class="star">*</span></td>
+  <td align="right">STREET Address 1</td>
+  <td><input name="address_1" type="text" size="25" /><span>*</span></td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">STREET Address 2</td>
+  <td align="right">STREET Address 2</td>
   <td><input name="address_2" type="text" size="25" /></td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">CITY</td>
-  <td><input name="city" type="text" size="25" /><span class="star">*</span></td>
+  <td align="right">CITY</td>
+  <td><input name="city" type="text" size="25" /><span>*</span></td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">STATE</td>
+  <td align="right">STATE</td>
   <td>
   	<select id="state" name="state">
 	  <%= options_for_select( [[ "Select a State", "" ]] + State::NAMES )%>
 	</select>
-  <span class="star">*</span></td>
+  <span>*</span></td>
   </tr>
   <tr>
-  <td align="right" class="norm_pink">ZIP</td>
-  <td><input name="zip" type="text" size="25" /><span class="star">*</span></td>
+  <td align="right">ZIP</td>
+  <td><input name="zip" type="text" size="25" /><span>*</span></td>
   </tr>
 <tr>
   <td align="right">&nbsp;</td>
   <td><br />
-    <span class="norm_pink">* </span><span class="norm_grey">Required Field </span>
-    <p class="norm_grey"><span class="norm_pink">* </span>By submitting your information you agree to the use of your contact information for marketing purposes by Rok Vegas Nightclub and New York New York Hotel &amp; Casino.</p>
+    <span>* </span><span class="norm_grey">Required Field </span>
+    <p class="norm_grey"><span>* </span>By submitting your information you agree to the use of your contact information for marketing purposes.</p>
     <br />
     <br />
-	<%= image_submit_tag "/images/sitewide/button_submitform.gif", :alt=>"", :id => 'create' %>
+	<%= submit_tag 'submit', :id => 'create' %>
 	<%= image_tag 'indicator.gif', :id => 'indicator', :style => 'display: none;' %><br />
     <br /></td>
   </tr>
-     </table>
-     </div>
+</table>
 
 <% end %>
 
