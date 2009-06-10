@@ -7,8 +7,8 @@ class Reservation < ActiveResource::Base
     self.password = "password"
   else
     self.site = "http://venuedriver.com/api"
-    self.user = VENUE_DRIVER_USERNAME
-    self.password = VENUE_DRIVER_PASSWORD
+    self.user = VENUE_DRIVER[:username]
+    self.password = VENUE_DRIVER[:password]
   end
   
 end
