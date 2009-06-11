@@ -17,8 +17,8 @@ class Promoter::GuestlistsController < Promoter::PromoterController
         record = {}
         [:first, :last, :phone, :email, :event, :extra_count].each {|param| record[param] = params[param]}
 
-        record[:account] = VENUEDRIVER[:account]
-        record[:staff_id] = VENUEDRIVER[:staff]
+        record[:account] = VENUEDRIVER[:account_id]
+        record[:staff_id] = VENUEDRIVER[:staff_id]
         
         guest = Guest.new record
         guest.save

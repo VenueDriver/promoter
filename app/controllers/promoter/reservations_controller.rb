@@ -19,8 +19,8 @@ class Promoter::ReservationsController < Promoter::PromoterController
         record = {}
         [:first, :last, :phone, :email, :event].each {|param| record[param] = params[param]}
 
-        record[:account] = VENUEDRIVER[:account]
-        record[:staff_id] = VENUEDRIVER[:staff]
+        record[:account] = VENUEDRIVER[:account_id]
+        record[:staff_id] = VENUEDRIVER[:staff_id]
       
         reservation = Reservation.new record
         reservation.save

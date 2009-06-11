@@ -23,8 +23,8 @@ class Promoter::ContactsController < Promoter::PromoterController
 
         record[:date_of_birth] = date_of_birth.to_s :db
 
-        record[:account] = VENUEDRIVER[:account]
-        record[:staff_id] = VENUEDRIVER[:staff]
+        record[:account] = VENUEDRIVER[:account_id]
+        record[:staff_id] = VENUEDRIVER[:staff_id]
         
         contact = Contact.new record
         contact.save
