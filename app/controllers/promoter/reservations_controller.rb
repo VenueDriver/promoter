@@ -3,6 +3,10 @@ class Promoter::ReservationsController < Promoter::PromoterController
   def index
     render :action => :new
   end
+
+  def thanks
+    render :template => 'promoter/reservations/create.html.erb'
+  end
   
   def create
   

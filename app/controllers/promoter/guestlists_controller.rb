@@ -3,7 +3,11 @@ class Promoter::GuestlistsController < Promoter::PromoterController
   def index
     render :action => :new
   end
-  
+
+  def thanks
+    render :template => 'promoter/guestlists/create.html.erb'
+  end
+
   def create
     flash[:error] = 'Please provide all required items.' if
       params[:first].blank? or params[:last].blank? or

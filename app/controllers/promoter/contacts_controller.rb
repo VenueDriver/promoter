@@ -3,7 +3,11 @@ class Promoter::ContactsController < Promoter::PromoterController
   def index
     render :action => :new
   end
-  
+
+  def thanks
+    render :template => 'promoter/contacts/create.html.erb'
+  end
+
   def create
     date_of_birth = Date.civil(params[:dob][:year].to_i, params[:dob][:month].to_i, params[:dob][:day].to_i)
     
