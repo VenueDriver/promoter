@@ -1,13 +1,11 @@
-Promoter
-========
+h1. Venue Driver Promoter
 
-Introduction goes here.
+This plugin provides easy client access for Rails web sites to the Venue Driver REST API.  You must
+have access to a Venue Driver account to use this plugin in a web site.
 
+h2. Features
 
-Example
-=======
-
-Example goes here.
-
-
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+* Remote read access to Venue Driver Event records through Active Resource.
+* The ability to create new Reservation and Guest list records through Active Resource.
+* A convenience custom REST collection action that returns a drop-down HTML selector with an event list, for signup forms.
+* The ability to create new mailing list signups by posting to a Contacts resource.
