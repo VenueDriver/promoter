@@ -13,9 +13,13 @@ h2. Features
 
 h3. Installation
 
-As a Rails 3 plugin: @rails plugin install https://github.com/angelmg/promoter.git@
+As a Rails 3 plugin:
 
-As a Git submodule: @git submodule add git@github.com:angelmg/promoter.git@
+<pre>rails plugin install https://github.com/angelmg/promoter.git<pre>
+
+As a Git submodule:
+
+<pre>git submodule add git@github.com:angelmg/promoter.git</pre>
 
 h3. Configuration
 
