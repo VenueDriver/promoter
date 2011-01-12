@@ -9,3 +9,25 @@ h2. Features
 * The ability to create new Reservation and Guest list records through Active Resource.
 * A convenience custom REST collection action that returns a drop-down HTML selector with an event list, for signup forms.
 * The ability to create new mailing list signups by posting to a Contacts resource.
+* Rails 3 compatible
+
+h3. Installation
+
+As a Rails 3 plugin: @rails plugin install https://github.com/angelmg/promoter.git@
+
+As a Git submodule: @git submodule add git@github.com:angelmg/promoter.git@
+
+h3. Configuration
+
+The plugin needs to know your Venue Driver account information.  You can configure that information
+by adding an initializer to your app in @config/initializers/promoter.rb@ like this:
+
+<pre>
+VENUE_DRIVER = {
+  :username => 'somewebsite',
+  :password => 'yourpassword',
+  :account_id => 908134,
+  :venue_id => 124319,
+  :staff_id => 250728
+}
+</pre>
