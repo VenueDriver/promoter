@@ -15,7 +15,7 @@ h3. Installation
 
 As a Rails 3 plugin:
 
-<pre>rails plugin install https://github.com/angelmg/promoter.git<pre>
+<pre>rails plugin install https://github.com/angelmg/promoter.git</pre>
 
 As a Git submodule:
 
