@@ -25,13 +25,11 @@ As a Git submodule:
 
 <pre>git submodule add git@github.com:angelmg/promoter.git</pre>
 
-Install the "Prototype Legacy Helper plugin":https://github.com/rails/prototype_legacy_helper in
-your Rails 3 app.
+Install the "Prototype Legacy Helper plugin":https://github.com/rails/prototype_legacy_helper in your Rails 3 app.
 
 h3. Configuration
 
-The plugin needs to know your Venue Driver account information.  You can configure that information
-by adding an initializer to your app in @config/initializers/promoter.rb@ like this:
+The plugin needs to know your Venue Driver account information.  You can configure that information by adding an initializer to your app in @config/initializers/promoter.rb@ like this:
 
 <pre>
 VENUE_DRIVER = {
@@ -43,13 +41,11 @@ VENUE_DRIVER = {
 }
 </pre>
 
-You can also specify the :local_server boolean value (:local_server => true) to instruct the Promoter
-plugin to look for Venue Driver at localhost:3000 instead of venuedriver.com.
+You can also specify the :local_server boolean value (:local_server => true) to instruct the Promoter plugin to look for Venue Driver at localhost:3000 instead of venuedriver.com.
 
 h3. Your New Classes
 
-The Promoter plugin provides some important model classes for communicating with Venue Driver.  The
-following are mirrors of model classes in Venue Driver:
+The Promoter plugin provides some important model classes for communicating with Venue Driver.  The following are mirrors of model classes in Venue Driver:
 
 * Contact
 * Event
@@ -57,9 +53,7 @@ following are mirrors of model classes in Venue Driver:
 * Guest
 * Reservation
 
-In addition, the plugin provides some utility classes.  The EventSelect model wraps a 15-minute
-Rails cache around the select_event Venue Driver REST API method.  To refresh the cache, use the
-Rake task provided by the Promoter plugin:
+In addition, the plugin provides some utility classes.  The EventSelect model wraps a 15-minute Rails cache around the select_event Venue Driver REST API method.  To refresh the cache, use the Rake task provided by the Promoter plugin:
 
 <pre>rake promoter:event_select:refresh</pre>
 
@@ -71,24 +65,17 @@ The plugin provides new routes for your Rails 3 web app:
 * /guestlists
 * /contacts
 
-Those routes provide functional UI for handling signups.  You can override those templates
-by copying the Promoter plugin's views into /app/views/promoter in your Rails 3 app.  In most
-cases you'll probably want to override the templates, because the included templates were
-factored out of a real venue's web app, and they make assumptions about images that you
-probably don't have.  Notably the indicator.gif in the forms.
+Those routes provide functional UI for handling signups.  You can override those templates by copying the Promoter plugin's views into /app/views/promoter in your Rails 3 app.  In most cases you'll probably want to override the templates, because the included templates were factored out of a real venue's web app, and they make assumptions about images that you probably don't have.  Notably the indicator.gif in the forms.
 
 h3. The EventSelect model
 
-You can use the EventSelect model to display a select tag in your view templates that contains
-the upcoming Event records in Venue Driver for the configured Venue.  Use it like this:
+You can use the EventSelect model to display a select tag in your view templates that contains the upcoming Event records in Venue Driver for the configured Venue.  Use it like this:
 
 <pre>
   <%= EventSelect.tag.html_safe %>
 </pre>
 
-The three included controllers, ContactsController, GuestlistsController, and ReservationsController,
-all derive from a common PromoterController, which sets @events equal to EventSelect.tag, so the
-forms in the view templates use:
+The three included controllers, ContactsController, GuestlistsController, and ReservationsController, all derive from a common PromoterController, which sets @events equal to EventSelect.tag, so the forms in the view templates use:
 
 <pre>
   <%= @events.html_safe %>
