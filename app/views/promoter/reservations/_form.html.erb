@@ -1,4 +1,4 @@
-<% form_remote_tag :url => reservations_path,
+<%= form_for [@reservation, Reservation.new], :remote => true,
   :loading => "Element.show('indicator');",
   :complete => "Element.hide('indicator');" do -%>
 
@@ -12,8 +12,8 @@
 			
   <table width="100%" border="0" cellspacing="10">
   <tr>
-    <td width="28%" align="right">EVENT</td>
-    <td width="72%"><%= @events %></td>
+    <td width="28%" align="right">Event</td>
+    <td width="72%"><%= @events.html_safe %></td>
   </tr>
   <tr>
     <td width="28%" align="right">First Name</td>

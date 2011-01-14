@@ -1,6 +1,6 @@
 class Contact < ActiveResource::Base
 
-  if ENV['RAILS_ENV'].eql? 'development' or ENV['RAILS_ENV'].eql? 'test'
+  if VENUE_DRIVER[:local_server]
     puts "Looking for Venue Driver on port 3000."
     self.site = "http://localhost:3000/api"
     self.user = "ryan"

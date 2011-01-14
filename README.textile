@@ -1,7 +1,8 @@
 h1. Venue Driver Promoter
 
-This plugin provides easy client access for Rails web sites to the Venue Driver REST API.  You must
-have access to a Venue Driver account to use this plugin in a web site.
+This plugin provides easy client access for Rails 3 web sites to the Venue Driver REST API.  You must
+have access to a Venue Driver account to use this plugin in a web site.  For Rails 2 support, get the
+rails2 branch.
 
 h2. Features
 
@@ -13,6 +14,9 @@ h2. Features
 
 h3. Installation
 
+The Promoter plugin functions as a Rails Engine plugin and it is compatible with Rails 3.  It is
+not set up to be used as a Rails Engine when installed as a gem, only when used as a plugin.
+
 As a Rails 3 plugin:
 
 <pre>rails plugin install https://github.com/angelmg/promoter.git</pre>
@@ -20,6 +24,9 @@ As a Rails 3 plugin:
 As a Git submodule:
 
 <pre>git submodule add git@github.com:angelmg/promoter.git</pre>
+
+Install the "Prototype Legacy Helper plugin":https://github.com/rails/prototype_legacy_helper in
+your Rails 3 app.
 
 h3. Configuration
 
@@ -34,4 +41,55 @@ VENUE_DRIVER = {
   :venue_id => 124319,
   :staff_id => 250728
 }
+</pre>
+
+You can also specify the :local_server boolean value (:local_server => true) to instruct the Promoter
+plugin to look for Venue Driver at localhost:3000 instead of venuedriver.com.
+
+h3. Your New Classes
+
+The Promoter plugin provides some important model classes for communicating with Venue Driver.  The
+following are mirrors of model classes in Venue Driver:
+
+* Contact
+* Event
+* Flyer
+* Guest
+* Reservation
+
+In addition, the plugin provides some utility classes.  The EventSelect model wraps a 15-minute
+Rails cache around the select_event Venue Driver REST API method.  To refresh the cache, use the
+Rake task provided by the Promoter plugin:
+
+<pre>rake promoter:event_select:refresh</pre>
+
+h3. Your New Routes
+
+The plugin provides new routes for your Rails 3 web app:
+
+* /reservations
+* /guestlists
+* /contacts
+
+Those routes provide functional UI for handling signups.  You can override those templates
+by copying the Promoter plugin's views into /app/views/promoter in your Rails 3 app.  In most
+cases you'll probably want to override the templates, because the included templates were
+factored out of a real venue's web app, and they make assumptions about images that you
+probably don't have.  Notably the indicator.gif in the forms.
+
+h3. The EventSelect model
+
+You can use the EventSelect model to display a select tag in your view templates that contains
+the upcoming Event records in Venue Driver for the configured Venue.  Use it like this:
+
+<pre>
+  <%= EventSelect.tag.html_safe %>
+</pre>
+
+The three included controllers, ContactsController, GuestlistsController, and ReservationsController,
+all derive from a common PromoterController, which sets @events equal to EventSelect.tag, so the
+forms in the view templates use:
+
+<pre>
+  <%= @events.html_safe %>
 </pre>
