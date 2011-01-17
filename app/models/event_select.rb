@@ -1,9 +1,9 @@
 class EventSelect
 
-  def self.tag
+  def self.tag(options={})
     tag = nil
     unless tag = Rails.cache.read('events')
-      tag = self.load
+      tag = self.load(options)
     end
     return tag
   end
@@ -14,13 +14,13 @@ class EventSelect
 
 private
 
-  def self.load
+  def self.load(options={})
     # REST API call to get HTML for a select tag containing an event list.
     require 'uri'
     require 'net/http'
-    url = "http://venuedriver.com/api/venues/#{VENUE_DRIVER[:venue_id]}/events/select_tag.html?username=#{VENUE_DRIVER[:username]}&password=#{VENUE_DRIVER[:password]}"
+    url = "http://venuedriver.com/api/venues/#{VENUE_DRIVER[:venue_id]}/events/select_tag#{options[:with_names].nil? ? '' : '_with_names'}.html?username=#{VENUE_DRIVER[:username]}&password=#{VENUE_DRIVER[:password]}"
     if VENUE_DRIVER[:local_server]
-      url = "http://localhost:3000/api/venues/#{VENUE_DRIVER[:venue_id]}/events/select_tag.html?username=ryan&password=password"
+      url = "http://localhost:3000/api/venues/#{VENUE_DRIVER[:venue_id]}/events/select_tag#{options[:with_names].nil? ? '' : '_with_names'}.html?username=ryan&password=password"
     end
 
     response = Net::HTTP.get_response(URI.parse(url))
