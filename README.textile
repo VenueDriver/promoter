@@ -81,6 +81,14 @@ The three included controllers, ContactsController, GuestlistsController, and Re
   <%= @events.html_safe %>
 </pre>
 
+h3. The AreaSelect model
+
+AreaSelect is a utility model similar to EventSelect, for displaying an HTML select tag containing the seating areas available for your venue.  Use it like this:
+
+<pre>
+  <%= AreaSelect.tag.html_safe %>
+</pre>
+
 h3. Action Names
 
 This plugin uses RESTful routing.  Therefore, the form for creating a new reservation or guest or contact signup is "new".  A name like "form" might sound more intuitive, but REST says that it should be "new".  Any thank-you message would be the result of a reservation getting posted, which is a "create".  So the thank-you confirmation message goes in "create".
